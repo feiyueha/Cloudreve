@@ -420,7 +420,7 @@ func (handler *Driver) Token(ctx context.Context, ttl int64, uploadSession *seri
 
 	// 回调策略
 	callbackPolicy := CallbackPolicy{
-		CallbackURL:      apiURL.String(),
+		CallbackURL:      strings.Replace(apiURL.String(), "https://", "http://", 1),
 		CallbackBody:     `{"name":${x:fname},"source_name":${object},"size":${size},"pic_info":"${imageInfo.width},${imageInfo.height}"}`,
 		CallbackBodyType: "application/json",
 	}
